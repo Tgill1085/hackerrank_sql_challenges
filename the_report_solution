@@ -1,0 +1,8 @@
+-- Select the fields used for the report
+SELECT
+-- Filter the student names that are only grade 8 and higher
+IF(g.Grade<8, NULL, s.Name), g.Grade, s.Marks 
+-- Join the tables on marks, filtering the values between the two columns
+FROM Students AS s JOIN Grades AS g ON s.Marks BETWEEN g.Min_Mark AND g.Max_Mark
+-- Sort the named students decending
+ORDER BY g.Grade DESC, s.Name, s.Marks;
